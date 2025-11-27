@@ -60,15 +60,15 @@ def update_profile_vulnerable():
         
     data = request.get_json()
     
-    # VULNERABLE IMPLEMENTATION: Mass Assignment (PATCHED)
-    # for key, value in data.items():
-    #     # Intentionally allowing all keys to be updated
-    #     if hasattr(user, key):
-    #         setattr(user, key, value)
+    VULNERABLE IMPLEMENTATION: Mass Assignment (PATCHED)
+    for key, value in data.items():
+        # Intentionally allowing all keys to be updated
+        if hasattr(user, key):
+            setattr(user, key, value)
 
     # SECURE IMPLEMENTATION: Whitelist approach
-    if 'email' in data:
-        user.email = data['email']
+    # if 'email' in data:
+    #     user.email = data['email']
             
     db.session.commit()
     return jsonify({"message": "Profile updated successfully"})
