@@ -60,7 +60,7 @@ def update_profile_vulnerable():
         
     data = request.get_json()
     
-    VULNERABLE IMPLEMENTATION: Mass Assignment (PATCHED)
+    # VULNERABLE IMPLEMENTATION: Mass Assignment (PATCHED)
     for key, value in data.items():
         # Intentionally allowing all keys to be updated
         if hasattr(user, key):
