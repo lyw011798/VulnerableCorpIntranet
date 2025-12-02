@@ -49,14 +49,15 @@ This document outlines the verification steps for the CorpIntranet application, 
      - **Conclusion:** The application blindly accepted the `role` field via the API.
 
 ### 3. Remediation Check (Verify Patch)
-1. The vulnerability has been patched in `app.py` by whitelisting allowed fields.
-2. **Attempt the Attack Again:**
+1. **Important**: Must delete the `instance/database.db` file before running the application again.
+2. The vulnerability has been patched in `app.py` by whitelisting allowed fields.
+3. **Attempt the Attack Again:**
    - Repeat the attack from Step 2.
    ```bash
    # Use the same token
    Invoke-RestMethod -Uri http://localhost:5000/api/profile/update -Method Post -Headers @{Authorization=$token} -Body '{"email": "hacker@evil.com", "role": "admin"}' -ContentType "application/json"
    ```
-3. **Verify Result:**
+4. **Verify Result:**
    - Refresh the dashboard.
    - **Observe:**
      - The role remains `user`.
